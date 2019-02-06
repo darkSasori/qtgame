@@ -1,0 +1,34 @@
+#include "player.h"
+
+#include <QGraphicsScene>
+#include <QKeyEvent>
+#include "bullet.h"
+
+Player::Player(QGraphicsItem *parent) : QGraphicsPixmapItem (parent)
+{
+    setPixmap(QPixmap(":/files/airplane.png"));
+}
+
+QRect Player::rect() const
+{
+    return pixmap().rect();
+}
+
+void Player::keyPressEvent(QKeyEvent *event)
+{
+    switch (event->key()) {
+    case Qt::Key_Right:
+        if (pos().x()+100 < 800)
+            setPos(x()+10, y());
+        break;
+    case Qt::Key_Left:
+        if (pos().x() > 0)
+            setPos(x()-10, y());
+        break;
+    case Qt::Key_Space:
+        auto *bullet = new Bullet();
+        bullet->setPos(x() + rect().width()/2, y());
+        scene()->addItem(bullet);
+        break;
+    }
+}
