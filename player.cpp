@@ -18,11 +18,11 @@ void Player::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
     case Qt::Key_Right:
-        if (pos().x()+100 < 800)
+        if (pos().x()+rect().width()/2 < scene()->width())
             setPos(x()+10, y());
         break;
     case Qt::Key_Left:
-        if (pos().x() > 0)
+        if (pos().x()+rect().width()/2 > 0)
             setPos(x()-10, y());
         break;
     case Qt::Key_Space:

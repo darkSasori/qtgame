@@ -1,30 +1,26 @@
 #include "manager.h"
 #include <QApplication>
-#include <QTimer>
 #include "enemy.h"
 #include "bullet.h"
 
 Manager::Manager(QWidget *parent) : QGraphicsView (parent)
 {
     scene = new QGraphicsScene(0, 0, 800, 600);
-
-    player = new Player();
-    scene->addItem(player);
-
-    score = new Score();
-    scene->addItem(score);
-
     setScene(scene);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     show();
     setFixedSize(800, 600);
-    scene->setSceneRect(0, 0, 800, 600);
 
+    player = new Player();
+    scene->addItem(player);
     player->setPos(width()/2 - player->rect().width(), height() - player->rect().height());
 
-    auto *timer = new QTimer();
+    score = new Score();
+    scene->addItem(score);
+
+    timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(spawnEnemy()));
     timer->start(500);
 }
@@ -38,7 +34,7 @@ void Manager::spawnEnemy()
 void Manager::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
-    case Qt::Key_Q:
+    case Qt::Key_Escape:
         QApplication::quit();
         break;
     case Qt::Key_Right:

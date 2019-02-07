@@ -22,15 +22,16 @@ void Bullet::move()
     for (auto enemy: items) {
         if (typeid(*enemy) == typeid(Enemy)) {
             game->score->increase();
-           scene()->removeItem(enemy);
-           scene()->removeItem(this);
+            scene()->removeItem(enemy);
+            scene()->removeItem(this);
 
-           delete enemy;
-           delete this;
+            delete enemy;
+            delete this;
 
            return;
         }
     }
+
     setPos(x(), y()-10);
     if (pos().y() + rect().height() < 0) {
         scene()->removeItem(this);

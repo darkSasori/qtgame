@@ -2,6 +2,11 @@
 #include <QTimer>
 #include <stdlib.h>
 #include <QGraphicsScene>
+#include "manager.h"
+#include "player.h"
+#include "score.h"
+
+extern Manager *game;
 
 Enemy::Enemy() : QObject (), QGraphicsRectItem ()
 {
@@ -16,9 +21,25 @@ Enemy::Enemy() : QObject (), QGraphicsRectItem ()
 
 void Enemy::move()
 {
-    setPos(x(), y()+5);
-    if (pos().y() + rect().height() < 0) {
-        scene()->removeItem(this);
-        delete this;
+    auto items = collidingItems();
+    for(auto item: items) {
+        if (typeid (*item) == typeid (Player)) {
+            game->score->decrease(ScorePoint::SHOT_PLAYER);
+            remove();
+
+            return;
+        }
     }
+
+    setPos(x(), y()+5);
+    if (pos().y() + rect().height() > scene()->height()) {
+        game->score->decrease(ScorePoint::END);
+        remove();
+    }
+}
+
+void Enemy::remove()
+{
+    scene()->removeItem(this);
+    delete this;
 }

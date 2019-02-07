@@ -3,6 +3,7 @@
 
 #include <QGraphicsRectItem>
 #include <QObject>
+#include "utils.h"
 
 
 class Bullet: public QObject, public QGraphicsRectItem

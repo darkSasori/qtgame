@@ -3,6 +3,7 @@
 
 #include <QGraphicsRectItem>
 #include <QObject>
+#include "utils.h"
 
 
 class Enemy: public QObject, public QGraphicsRectItem
@@ -13,6 +14,9 @@ public:
 
 public slots:
     void move();
+
+private:
+    void remove();
 };
 
 #endif // ENEMY_H
