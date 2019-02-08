@@ -9,7 +9,7 @@
 class Player : public QGraphicsPixmapItem
 {
 public:
-    Player(QGraphicsItem *parent = 0);
+    Player(QGraphicsItem *parent = nullptr);
     void keyPressEvent(QKeyEvent *event);
     QRect rect() const;
 

@@ -10,10 +10,12 @@ Bullet::Bullet()
 {
     setRect(0, 0, 10, 50);
 
-    auto *timer = new QTimer();
+    timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
     timer->start(50);
 
+    connect(game, SIGNAL(remove()), this, SLOT(remove()));
+    connect(game, SIGNAL(enemy_stop()), this, SLOT(stop()));
 }
 
 void Bullet::move()
@@ -23,10 +25,8 @@ void Bullet::move()
         if (typeid(*enemy) == typeid(Enemy)) {
             game->score->increase();
             scene()->removeItem(enemy);
-            scene()->removeItem(this);
-
             delete enemy;
-            delete this;
+            remove();
 
            return;
         }
@@ -34,7 +34,17 @@ void Bullet::move()
 
     setPos(x(), y()-10);
     if (pos().y() + rect().height() < 0) {
-        scene()->removeItem(this);
-        delete this;
+        remove();
     }
+}
+
+void Bullet::remove()
+{
+    scene()->removeItem(this);
+    delete this;
+}
+
+void Bullet::stop()
+{
+    timer->stop();
 }

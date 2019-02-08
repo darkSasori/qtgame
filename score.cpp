@@ -29,3 +29,9 @@ int Score::getScore()
 {
     return score;
 }
+
+void Score::zero()
+{
+    score = 0;
+    updateText();
+}

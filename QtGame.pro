@@ -30,7 +30,8 @@ SOURCES += \
     enemy.cpp \
     manager.cpp \
     score.cpp \
-    player.cpp
+    player.cpp \
+    helper.cpp
 
 HEADERS += \
     bullet.h \
@@ -38,7 +39,8 @@ HEADERS += \
     manager.h \
     utils.h \
     score.h \
-    player.h
+    player.h \
+    helper.h
 
 FORMS +=
 

@@ -1,7 +1,8 @@
 #include "enemy.h"
-#include <QTimer>
 #include <stdlib.h>
 #include <QGraphicsScene>
+#include <QDesktopWidget>
+#include <QApplication>
 #include "manager.h"
 #include "player.h"
 #include "score.h"
@@ -10,13 +11,17 @@ extern Manager *game;
 
 Enemy::Enemy() : QObject (), QGraphicsRectItem ()
 {
-    auto pos_x = static_cast<qreal>(rand() % 700);
+    auto rect = QApplication::desktop()->screen();
+    auto pos_x = static_cast<qreal>(rand() % rect->width());
     setPos(pos_x, 0);
     setRect(0, 0, 100, 100);
 
-    auto *timer = new QTimer();
+    timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
     timer->start(50);
+
+    connect(game, SIGNAL(remove()), this, SLOT(remove()));
+    connect(game, SIGNAL(enemy_stop()), this, SLOT(stop()));
 }
 
 void Enemy::move()
@@ -42,4 +47,9 @@ void Enemy::remove()
 {
     scene()->removeItem(this);
     delete this;
+}
+
+void Enemy::stop()
+{
+    timer->stop();
 }

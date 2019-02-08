@@ -8,6 +8,7 @@
 #include <QTimer>
 #include "player.h"
 #include "score.h"
+#include "helper.h"
 #include "utils.h"
 
 
@@ -15,7 +16,9 @@ class Manager : public QGraphicsView
 {
     Q_OBJECT
 public:
-    Manager(QWidget *parent = 0);
+    const static int TIME_SPAWN = 500;
+
+    Manager(QWidget *parent = nullptr);
     void keyPressEvent(QKeyEvent *event);
 
     QGraphicsScene *scene;
@@ -25,6 +28,18 @@ public:
 
 public slots:
     void spawnEnemy();
+
+signals:
+    void enemy_stop();
+    void remove();
+
+private:
+    void start();
+    void stop();
+    void restart();
+
+    bool started;
+    Helper *helper;
 };
 
 #endif // MANAGER_H

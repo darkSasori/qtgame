@@ -13,11 +13,12 @@ enum ScorePoint{
 class Score : public QGraphicsTextItem
 {
 public:
-    Score(QGraphicsItem *parent = 0);
+    Score(QGraphicsItem *parent = nullptr);
 
     void increase();
     void decrease(ScorePoint point);
     int getScore();
+    void zero();
 
 private:
     void updateText();

@@ -3,6 +3,7 @@
 
 #include <QGraphicsRectItem>
 #include <QObject>
+#include <QTimer>
 #include "utils.h"
 
 
@@ -14,6 +15,11 @@ public:
 
 public slots:
     void move();
+    void remove();
+    void stop();
+
+private:
+    QTimer *timer;
 };
 
 #endif // BULLET_H
