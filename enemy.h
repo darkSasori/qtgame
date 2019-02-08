@@ -1,17 +1,18 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QTimer>
 #include "utils.h"
 
 
-class Enemy: public QObject, public QGraphicsRectItem
+class Enemy: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    Enemy();
+    Enemy(QGraphicsItem *parent = nullptr);
+    QRect rect() const;
 
 public slots:
     void move();

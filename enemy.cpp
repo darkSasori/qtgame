@@ -9,12 +9,12 @@
 
 extern Manager *game;
 
-Enemy::Enemy() : QObject (), QGraphicsRectItem ()
+Enemy::Enemy(QGraphicsItem *parent) : QObject (), QGraphicsPixmapItem (parent)
 {
-    auto rect = QApplication::desktop()->screen();
-    auto pos_x = static_cast<qreal>(rand() % rect->width());
+    setPixmap(QPixmap(":/files/airplane_2.png"));
+
+    auto pos_x = static_cast<qreal>(rand() % 700);
     setPos(pos_x, 0);
-    setRect(0, 0, 100, 100);
 
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
@@ -22,6 +22,11 @@ Enemy::Enemy() : QObject (), QGraphicsRectItem ()
 
     connect(game, SIGNAL(remove()), this, SLOT(remove()));
     connect(game, SIGNAL(enemy_stop()), this, SLOT(stop()));
+}
+
+QRect Enemy::rect() const
+{
+    return pixmap().rect();
 }
 
 void Enemy::move()

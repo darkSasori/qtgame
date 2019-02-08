@@ -11,7 +11,7 @@ class Bullet: public QObject, public QGraphicsRectItem
 {
     Q_OBJECT
 public:
-    Bullet();
+    Bullet(QGraphicsItem *parent = nullptr);
 
 public slots:
     void move();

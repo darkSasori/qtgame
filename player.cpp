@@ -6,7 +6,7 @@
 
 Player::Player(QGraphicsItem *parent) : QGraphicsPixmapItem (parent)
 {
-    setPixmap(QPixmap(":/files/airplane.png"));
+    setPixmap(QPixmap(":/files/airplane_1.png"));
 }
 
 QRect Player::rect() const

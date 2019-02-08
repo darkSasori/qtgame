@@ -6,7 +6,7 @@
 
 extern Manager *game;
 
-Bullet::Bullet()
+Bullet::Bullet(QGraphicsItem *parent) : QObject (), QGraphicsRectItem (parent)
 {
     setRect(0, 0, 10, 50);
 
