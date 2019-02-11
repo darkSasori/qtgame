@@ -3,11 +3,12 @@
 #include <QApplication>
 #include "enemy.h"
 #include "bullet.h"
+#include <QScreen>
 
 Manager::Manager(QWidget *parent) : QGraphicsView (parent), started(false)
 {
-    auto rect = QApplication::desktop()->screen();
-    int w = rect->width(), h = rect->height();
+    auto rect = QApplication::screens()[0]->geometry();
+    int w = rect.width(), h = rect.height();
 
     setWindowState(Qt::WindowFullScreen);
 
@@ -42,6 +43,7 @@ void Manager::start()
     }
 
     emit remove();
+    spawnEnemy();
     timer->start(TIME_SPAWN);
     score->zero();
     started = true;

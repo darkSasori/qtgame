@@ -16,7 +16,7 @@ class Manager : public QGraphicsView
 {
     Q_OBJECT
 public:
-    const static int TIME_SPAWN = 500;
+    const static int TIME_SPAWN = 1000;
 
     Manager(QWidget *parent = nullptr);
     void keyPressEvent(QKeyEvent *event);
