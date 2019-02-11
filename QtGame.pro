@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = QtGame
+TARGET = qtgame
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -25,22 +25,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-    bullet.cpp \
-    enemy.cpp \
-    manager.cpp \
-    score.cpp \
-    player.cpp \
-    helper.cpp
+        src/main.cpp \
+    src/bullet.cpp \
+    src/enemy.cpp \
+    src/manager.cpp \
+    src/score.cpp \
+    src/player.cpp \
+    src/helper.cpp
 
 HEADERS += \
-    bullet.h \
-    enemy.h \
-    manager.h \
-    utils.h \
-    score.h \
-    player.h \
-    helper.h
+    src/bullet.h \
+    src/enemy.h \
+    src/manager.h \
+    src/utils.h \
+    src/score.h \
+    src/player.h \
+    src/helper.h
 
 FORMS +=
 
