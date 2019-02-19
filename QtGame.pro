@@ -53,4 +53,5 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES += \
-    README.md
+    README.md \
+    .github/main.workflow

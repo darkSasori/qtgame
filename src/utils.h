@@ -1,5 +1,6 @@
-#ifndef UTILS_H
-#define UTILS_H
+// Copyright 2019 <lineufelipe@gmail.com>
+#ifndef SRC_UTILS_H_
+#define SRC_UTILS_H_
 
 #ifdef QT_DEBUG
 #include <QDebug>
@@ -8,5 +9,4 @@
 #define debug(...)
 #endif
 
-
-#endif // UTILS_H
+#endif  // SRC_UTILS_H_

@@ -1,21 +1,19 @@
+// Copyright 2019 <lineufelipe@gmail.com>
 #include "player.h"
 
 #include <QGraphicsScene>
 #include <QKeyEvent>
 #include "bullet.h"
 
-Player::Player(QGraphicsItem *parent) : QGraphicsPixmapItem (parent)
-{
+Player::Player(QGraphicsItem *parent) : QGraphicsPixmapItem(parent) {
     setPixmap(QPixmap(":/files/airplane_1.png"));
 }
 
-QRect Player::rect() const
-{
+QRect Player::rect() const {
     return pixmap().rect();
 }
 
-void Player::keyPressEvent(QKeyEvent *event)
-{
+void Player::keyPressEvent(QKeyEvent *event) {
     switch (event->key()) {
     case Qt::Key_Right:
         if (pos().x()+rect().width()/2 < scene()->width())

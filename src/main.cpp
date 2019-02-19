@@ -1,3 +1,4 @@
+// Copyright 2019 <lineufelipe@gmail.com>
 #include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -8,8 +9,7 @@
 
 Manager *game;
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 
     game = new Manager();

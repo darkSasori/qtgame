@@ -1,21 +1,16 @@
-#ifndef MYRECT_H
-#define MYRECT_H
+// Copyright 2019 <lineufelipe@gmail.com>
+#ifndef SRC_PLAYER_H_
+#define SRC_PLAYER_H_
 
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include "utils.h"
 
-
-class Player : public QGraphicsPixmapItem
-{
+class Player : public QGraphicsPixmapItem {
 public:
-    Player(QGraphicsItem *parent = nullptr);
+    explicit Player(QGraphicsItem *parent = nullptr);
     void keyPressEvent(QKeyEvent *event);
     QRect rect() const;
-
-signals:
-
-public slots:
 };
 
-#endif // MYRECT_H
+#endif  // SRC_PLAYER_H_

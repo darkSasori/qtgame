@@ -1,17 +1,16 @@
-#ifndef ENEMY_H
-#define ENEMY_H
+// Copyright 2019 <lineufelipe@gmail.com>
+#ifndef SRC_ENEMY_H_
+#define SRC_ENEMY_H_
 
 #include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QTimer>
 #include "utils.h"
 
-
-class Enemy: public QObject, public QGraphicsPixmapItem
-{
+class Enemy: public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:
-    Enemy(QGraphicsItem *parent = nullptr);
+    explicit Enemy(QGraphicsItem *parent = nullptr);
     QRect rect() const;
 
 public slots:
@@ -23,4 +22,4 @@ private:
     QTimer *timer;
 };
 
-#endif // ENEMY_H
+#endif  // SRC_ENEMY_H_

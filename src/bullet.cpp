@@ -1,3 +1,4 @@
+// Copyright 2019 <lineufelipe@gmail.com>
 #include "bullet.h"
 #include <QTimer>
 #include <QGraphicsScene>
@@ -6,8 +7,7 @@
 
 extern Manager *game;
 
-Bullet::Bullet(QGraphicsItem *parent) : QObject (), QGraphicsRectItem (parent)
-{
+Bullet::Bullet(QGraphicsItem *parent) : QObject(), QGraphicsRectItem(parent) {
     setRect(0, 0, 10, 50);
 
     timer = new QTimer();
@@ -18,8 +18,7 @@ Bullet::Bullet(QGraphicsItem *parent) : QObject (), QGraphicsRectItem (parent)
     connect(game, SIGNAL(enemy_stop()), this, SLOT(stop()));
 }
 
-void Bullet::move()
-{
+void Bullet::move() {
     auto items = collidingItems();
     for (auto enemy: items) {
         if (typeid(*enemy) == typeid(Enemy)) {
@@ -38,13 +37,11 @@ void Bullet::move()
     }
 }
 
-void Bullet::remove()
-{
+void Bullet::remove() {
     scene()->removeItem(this);
     delete this;
 }
 
-void Bullet::stop()
-{
+void Bullet::stop() {
     timer->stop();
 }

@@ -1,8 +1,8 @@
+// Copyright 2019 <lineufelipe@gmail.com>
 #include "helper.h"
 #include <QFont>
 
-Helper::Helper(QGraphicsItem *parent) : QGraphicsTextItem (parent)
-{
+Helper::Helper(QGraphicsItem *parent) : QGraphicsTextItem(parent) {
     setDefaultTextColor(Qt::red);
     setFont(QFont("times", 16));
 

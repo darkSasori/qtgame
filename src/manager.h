@@ -1,5 +1,6 @@
-#ifndef MANAGER_H
-#define MANAGER_H
+// Copyright 2019 <lineufelipe@gmail.com>
+#ifndef SRC_MANAGER_H_
+#define SRC_MANAGER_H_
 
 #include <QObject>
 #include <QGraphicsView>
@@ -11,14 +12,12 @@
 #include "helper.h"
 #include "utils.h"
 
-
-class Manager : public QGraphicsView
-{
+class Manager : public QGraphicsView {
     Q_OBJECT
-public:
     const static int TIME_SPAWN = 1000;
 
-    Manager(QWidget *parent = nullptr);
+public:
+    explicit Manager(QWidget *parent = nullptr);
     void keyPressEvent(QKeyEvent *event);
 
     QGraphicsScene *scene;
@@ -42,4 +41,4 @@ private:
     Helper *helper;
 };
 
-#endif // MANAGER_H
+#endif  // SRC_MANAGER_H_

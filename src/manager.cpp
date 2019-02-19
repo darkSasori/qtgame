@@ -1,12 +1,12 @@
+// Copyright 2019 <lineufelipe@gmail.com>
 #include "manager.h"
 #include <QDesktopWidget>
 #include <QApplication>
+#include <QScreen>
 #include "enemy.h"
 #include "bullet.h"
-#include <QScreen>
 
-Manager::Manager(QWidget *parent) : QGraphicsView (parent), started(false)
-{
+Manager::Manager(QWidget *parent) : QGraphicsView(parent), started(false) {
     auto rect = QApplication::screens()[0]->geometry();
     int w = rect.width(), h = rect.height();
 
@@ -22,7 +22,9 @@ Manager::Manager(QWidget *parent) : QGraphicsView (parent), started(false)
 
     player = new Player();
     scene->addItem(player);
-    player->setPos(width()/2 - player->rect().width()/2, height() - player->rect().height());
+    player->setPos(
+                width()/2 - player->rect().width()/2,
+                height() - player->rect().height());
 
     score = new Score();
     score->setPos(0, 1);
@@ -36,8 +38,7 @@ Manager::Manager(QWidget *parent) : QGraphicsView (parent), started(false)
     scene->addItem(helper);
 }
 
-void Manager::start()
-{
+void Manager::start() {
     if (started) {
         return;
     }
@@ -49,14 +50,12 @@ void Manager::start()
     started = true;
 }
 
-void Manager::restart()
-{
+void Manager::restart() {
     stop();
     start();
 }
 
-void Manager::stop()
-{
+void Manager::stop() {
     if (!started) {
         return;
     }
@@ -66,14 +65,12 @@ void Manager::stop()
     started = false;
 }
 
-void Manager::spawnEnemy()
-{
+void Manager::spawnEnemy() {
     auto *enemy = new Enemy();
     scene->addItem(enemy);
 }
 
-void Manager::keyPressEvent(QKeyEvent *event)
-{
+void Manager::keyPressEvent(QKeyEvent *event) {
     switch (event->key()) {
     case Qt::Key_Escape:
         QApplication::quit();
